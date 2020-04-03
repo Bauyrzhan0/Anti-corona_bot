@@ -59,8 +59,8 @@ def get_json2():
 
 #returns list with [lat,long]
 def ad_co(adress):
-    text=adress.replace(',','').replace(' ','+')
-    url = "https://geocode-maps.yandex.ru/1.x/?apikey=bf4d42de-11c8-4f5c-ba5b-5816d2277853&format=json&geocode="+text
+    text=adress.replace(',','').replace(' ','+')     #яндекс ключ, загугли)
+    url = "https://geocode-maps.yandex.ru/1.x/?apikey=bf4d42de-11c8-4f5c-ba5b-5816d2277853&format=json&geocode="+text 
     r = requests.get(url)
     newdata = r.json()
     data=newdata['response']["GeoObjectCollection"]["featureMember"][0]["GeoObject"]["Point"]["pos"].replace('"',"").split()
@@ -75,7 +75,7 @@ def co_ad(g,gg):
     data=newdata["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]["metaDataProperty"]["GeocoderMetaData"]["text"]
     return data
 
-bot = telebot.TeleBot('1096544431:AAGfEYMoxTmLjxfth189L1XFK117GfFQSx4')
+bot = telebot.TeleBot('#Телеграм апи бота')
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
@@ -109,6 +109,3 @@ def send_text(message):
 
 bot.polling()
 
-
-
-#4123e499-882f-4c3a-86f6-6ebcffdbeaea
